@@ -1,0 +1,61 @@
+@use "/src/styles/colors";
+@use "/src/styles/mixins" as fn;
+@use "/src/styles/fonts";
+
+.profile-navigation {
+  @include fn.flex(center, space-between);
+  display: flex!important;
+  position: relative;
+  width: 100%;
+  // border-bottom: solid 4px rgba(255, 255, 255, 0.2);
+  font-size: fonts.$font-size-lg;
+  font-weight: 500;
+  padding: 20px 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
+   -ms-overflow-style: none;
+   /* IE and Edge */
+   scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::after{
+    content: '';
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+
+  .tab {
+    position: relative;
+    padding: 0 30px;
+    img {
+      vertical-align: middle;
+      margin: 0 10px;
+    }
+    .additional {
+      display: inline-block;
+      margin: 0 10px;
+      font-weight: 300;
+    }
+  }
+  .tab::after {
+    width: 100%;
+    position: absolute;
+    bottom: -21px;
+    left: 0;
+    content: "";
+    height: 4px;
+    background: colors.$gradient-blue;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+  }
+  .tab.active::after {
+    opacity: 1;
+  }
+}

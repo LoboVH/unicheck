@@ -1,0 +1,91 @@
+@use '/src/styles/mixins' as fn;
+@use '/src/styles/fonts';
+@use '/src/styles/global';
+
+.solid-nav{
+  background: rgb(2, 0, 15);
+}
+
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 10000; 
+    width: 100%;
+    @include fn.flex-center;
+}
+.navbar{
+    height: 4rem;
+    width: 100%;
+    max-width: 1290px;
+    z-index: 900;
+    @include fn.flex(center, space-between);
+    padding: 0 2rem;
+    .brand-link{
+        padding: 0;
+        margin: 0;
+    }
+    .navbar-brand{
+        height: 3.5rem ;
+    }
+    .nav-links{
+        @include fn.flex(center, flex-end);
+        gap: 1.5rem;
+        min-width: fit-content;
+        .nav-link{
+            text-decoration: none;
+            color: #fff;
+            font-size: fonts.$font-size-base;
+            &:hover{
+                color: #999;
+            }
+        }
+    }
+    .nav-icons{
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+.nav-menu-icons{
+    display: none;
+}
+
+.MuiMenu-paper{
+    .balance-box{
+        padding: 1rem 1rem 0.5rem;
+        border-top: 0.5px solid rgba($color: #E1E1E1, $alpha: 0.2);
+        font-size: fonts.$font-size-lg;
+        .balance{
+            font-weight: 500;
+            margin-bottom: .5rem;
+            font-size: fonts.$font-size-base;
+        }
+    }
+    .menu-link{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar{
+        .nav-links{
+            font-size: fonts.$font-size-sm;
+            gap: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar{
+        .nav-links{
+            display: none;
+        }
+        .search-bar-box{
+            display: none;
+        }
+    }
+    .nav-menu-icons{
+        display: flex;
+        align-items: center;
+    }
+}

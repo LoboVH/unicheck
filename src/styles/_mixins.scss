@@ -1,0 +1,52 @@
+@use '/src/styles/colors';
+
+@mixin flex($items, $justify) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $items;
+}
+
+@mixin flex-col($items, $justify) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $items;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin max-width($width) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin min-width($width) {
+    @media screen and (min-width: $width) {
+        @content;
+    }
+}
+
+@mixin text-gradient {
+    background: linear-gradient(colors.$color-purple-1, colors.$color-purple-2) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+// responsive breakpoints
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+$transition: all 0.5s ease-in-out;
+
+@mixin mQ($width) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}

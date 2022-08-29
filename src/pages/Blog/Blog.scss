@@ -1,0 +1,285 @@
+@use "/src/styles/colors";
+@use "/src/styles/mixins" as fn;
+@use "/src/styles/fonts";
+
+.blog {
+  @include fn.flex-col(center, center);
+  position: relative;
+  width: 100%;
+  max-width: 1290px;
+  padding: 10rem 2rem;
+  padding-bottom: 0;
+  font-weight: 300;
+
+  // Background Particles
+  .background-particle {
+    position: absolute;
+    z-index: -1;
+  }
+
+  .background-particle:nth-of-type(2n + 1) {
+    left: -30%;
+  }
+  .background-particle:nth-of-type(2n){
+    left: 70%;
+  }
+  .background-particle:nth-of-type(1) {
+    top: 1%;
+  }
+
+  .background-particle:nth-of-type(2) {
+    top: 22%;
+  }
+
+  .background-particle:nth-of-type(3) {
+    top: 48%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .background-particle:nth-of-type(4) {
+    top: 75%;
+    left: -30%;
+  }
+
+  // Recommended Blogs
+  .blog-recommended {
+    .background-particle {
+      top: -15%;
+      left: -20%;
+    }
+    .blog-recommended-holder {
+      padding: 2rem 0;
+      height: 57rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: repeat(minmax(0, 1fr));
+      grid-column-gap: 6.6rem;
+      grid-row-gap: 3.3rem;
+      height: fit-content;
+
+      .blog-recommended-main {
+        @include fn.flex-col(flex-start, flex-start);
+        align-self: center;
+        gap: 1rem;
+        grid-row: 1/3;
+        .blog-recommended-image {
+          max-height: 40rem;
+          width: 100%;
+          overflow: hidden;
+          border-radius: 2rem;
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+        .blog-recommended-main-heading {
+          margin: 0;
+          font-weight: 600;
+          font-size: fonts.$font-size-3xl;
+        }
+        .blog-description {
+          font-size: fonts.$font-size-lg;
+        }
+        .blog-info {
+          font-size: fonts.$font-size-sm;
+        }
+      }
+      .blog-recommended-side {
+        @include fn.flex-col(flex-start, flex-start);
+        gap: 1rem;
+        grid-column: 2/3;
+        min-height: 0;
+        text-overflow: ellipsis !important;
+        .blog-recommended-image {
+          width: 100%;
+          height: 15rem;
+          overflow: hidden;
+          border-radius: 2rem;
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+        .blog-recommended-side-heading {
+          margin: 0;
+          font-weight: 600;
+          font-size: fonts.$font-size-lg;
+        }
+        .blog-description {
+          text-overflow: ellipsis;
+          font-size: fonts.$font-size-sm;
+        }
+        .blog-info {
+          font-size: fonts.$font-size-xs;
+        }
+      }
+      .blog-recommended-side:nth-of-type(2) {
+        align-self: flex-start;
+      }
+      .blog-recommended-side:nth-of-type(3) {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  // Recent Blogs
+  .blog-recent {
+    padding: 5rem 0;
+    padding-bottom: 25rem;
+    width: 100%;
+
+    .blog-recent-header {
+      @include fn.flex(center, space-between);
+      width: 100%;
+      .blog-recent-filter {
+        @include fn.flex(center, space-between);
+        background-color: #252330;
+        font-weight: 400;
+        font-size: fonts.$font-size-lg;
+        padding: 1rem;
+        width: 10%;
+        min-width: 14rem;
+        border-radius: 1rem;
+
+        button {
+          @include fn.flex(center, center);
+          height: 100%;
+          img {
+            display: block;
+            height: 100%;
+            width: auto;
+          }
+        }
+      }
+    }
+
+    .blog-recent-element-holder {
+      @include fn.flex-col(center, flex-start);
+      padding: 4rem 0;
+      gap: 7.5rem;
+      .blog-recent-element {
+        @include fn.flex(flex-start, space-between);
+        width: 100%;
+        height: 16rem;
+        .blog-recent-element-image {
+          width: 40%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 2rem;
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+        .blog-recent-element-info {
+          @include fn.flex-col(flex-start, space-between);
+          height: 100%;
+          gap: 1.5rem;
+          width: 55%;
+          .blog-recent-element-heading {
+            font-size: fonts.$font-size-2xl;
+            font-weight: 700;
+            margin: 0;
+          }
+          .blog-info-element {
+            font-size: fonts.$font-size-sm;
+            font-weight: 600;
+          }
+          .blog-description {
+            font-size: fonts.$font-size-lg;
+          }
+        }
+      }
+      .blog-recent-element:nth-of-type(2n) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    .blog-recent-switcher {
+      @include fn.flex(center, center);
+      gap: 0.75rem;
+      width: 100%;
+      padding-top: 10rem;
+
+      .blog-recent-switcher-button {
+        display: block;
+        max-height: 3em;
+        img {
+          display: block;
+          max-height: 2em;
+        }
+      }
+      .blog-recent-switcher-button:disabled {
+        cursor: initial;
+        opacity: 0.5;
+      }
+      .blog-recent-switcher-element {
+        border-radius: 1rem;
+        cursor: pointer;
+        text-align: center;
+        line-height: 2em;
+        height: 2em;
+        width: 2em;
+        font-weight: 600;
+        font-size: fonts.$font-size-2xl;
+      }
+
+      .blog-recent-switcher-element.current {
+        background: colors.$gradient-blue;
+      }
+    }
+  }
+
+  // Some Common Styles
+  .blog-heading {
+    margin: 0;
+    color: rgba(0, 0, 0, 0);
+    background: colors.$gradient-blue;
+    background-clip: text;
+    font-size: fonts.$font-size-4xl;
+  }
+
+  .blog-info {
+    @include fn.flex(center, space-between);
+    width: 100%;
+    font-weight: 600;
+  }
+
+  .blog-info-element {
+    padding: 0 0.5rem;
+    position: relative;
+    color: rgba(0, 0, 0, 0);
+    background: colors.$gradient-blue;
+    background-clip: text;
+  }
+  .blog-info-element.left {
+    margin-left: 2.5em;
+  }
+  .blog-info-element.right {
+    margin-right: 2.5em;
+  }
+  .blog-info-element.left::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 100%;
+    background: colors.$gradient-blue;
+    height: 0.1rem;
+    width: 2.5em;
+  }
+  .blog-info-element.right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+    background: colors.$gradient-blue;
+    height: 0.1rem;
+    width: 2.5em;
+  }
+}

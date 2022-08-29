@@ -1,0 +1,174 @@
+@use "src/styles/fonts";
+@use "src/styles/helper";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  box-sizing: border-box;
+  // transition: all 0.3s ease;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: helper.$font-rubik;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000002;
+  min-height: 100vh;
+  position: relative;
+  color: #fff;
+}
+
+button {
+  font-family: helper.$font-rubik !important;
+}
+
+#chain-select-label,
+#demo-simple-select-standard-label {
+  color: #fff !important;
+}
+#chain-select {
+  color: #fff !important;
+}
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+  fill: white !important;
+}
+.css-1mf6u8l-MuiSvgIcon-root-MuiSelect-icon {
+  fill: white !important;
+}
+.css-a3l6o-MuiInputBase-root-MuiInput-root-MuiSelect-root:before {
+  border-bottom: 1px solid rgba($color: #666, $alpha: 0.8) !important;
+}
+.css-a3l6o-MuiInputBase-root-MuiInput-root-MuiSelect-root:after {
+  border-bottom: 1px solid rgba($color: #fff, $alpha: 1) !important;
+}
+
+.App {
+  @include helper.flex-col(center, start);
+}
+.Toastify__toast{
+  margin-top: 55px;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  background: helper.$gradient-blue;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  &:hover {
+    filter: brightness(125%);
+    color: #fff !important;
+  }
+}
+.btn-grey {
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  background: rgba($color: #666, $alpha: 0.2);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  &:hover {
+    filter: brightness(125%);
+    color: #fff !important;
+  }
+}
+.large-btn {
+  font-weight: 500;
+  font-family: fonts.$font-rubik !important;
+  padding: 1rem;
+  width: 100%;
+  font-size: fonts.$font-size-xl;
+}
+.large-btn-outline {
+  font-weight: 500;
+  background: none;
+  border: 1px solid rgba($color: #fff, $alpha: 0.3);
+  font-family: fonts.$font-rubik !important;
+  padding: 1rem;
+  width: 100%;
+  font-size: fonts.$font-size-xl;
+  border-radius: 10px;
+}
+.btn-outline {
+  font-weight: 500;
+  background: none;
+  border: 1px solid rgba($color: #fff, $alpha: 0.3);
+  font-family: fonts.$font-rubik !important;
+  padding: 1rem;
+  width: 100%;
+  // font-size: fonts.$font-size-xl;
+  border-radius: 10px;
+}
+input[type="file"]{
+  display: none!important;
+}
+.blue-head {
+  font-size: helper.$font-size-4xl;
+  font-weight: bold;
+  // color: helper.$color-purple-2;
+  text-align: center;
+  @include helper.text-gradient;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.MuiMenu-paper {
+  background-color: rgba($color: #fff, $alpha: 0.125) !important;
+  backdrop-filter: blur(10px);
+  color: #fff !important;
+  z-index: 11000 !important;
+  margin-top: 1rem;
+  width: 200px;
+  border-radius: 10px !important;
+}
+
+.hidden {
+  display: none;
+}
+
+p {
+  margin: 0;
+}
+
+.noScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.noScrollbar {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  background-color: #202324;
+  color: #aba499;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #181a1b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #454a4d;
+}

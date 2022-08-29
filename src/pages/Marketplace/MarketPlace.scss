@@ -1,0 +1,771 @@
+@use "/src/styles/colors";
+@use "/src/styles/mixins" as fn;
+@use "/src/styles/fonts";
+
+.market-place {
+  position: relative;
+  max-width: 1290px;
+  padding: 6rem 2rem;
+  width: 100%;
+
+  // Some Common Elements
+  .navigation-marker {
+    @include fn.flex(center, center);
+    gap: 10px;
+    margin-top: 68px;
+    .navigation-tab {
+      height: 10px;
+      width: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+    }
+    .navigation-tab.current {
+      background-color: #5d5fef;
+      width: 60px;
+    }
+  }
+  .btn-holder {
+    @include fn.flex(center, center);
+    gap: 0.5rem;
+    .left-btn,
+    .right-btn {
+      position: relative;
+      padding: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      img {
+        vertical-align: middle;
+      }
+      &::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background: colors.$gradient-blue;
+        transition: 0.32s ease-in-out;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+  // Main
+  .market-place-main {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4rem;
+    align-items: center;
+    .market{
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      align-items: center;
+      &>img{
+        width: 100%;
+        height: 500px;
+        border-radius: 1rem;
+        object-fit: cover;
+      }
+    }
+    .market-place-main-text {
+      .market-place-main-heading {
+        font-size: fonts.$font-size-4xl;
+        font-weight: 700;
+        margin: 0;
+      }
+      .market-place-main-intro {
+        margin-top: 10px;
+        font-size: fonts.$font-size-xl;
+        font-weight: 300;
+      }
+      .market-place-main-button-holder {
+        display: flex;
+        grid-column-gap: 1.5rem;
+        // width: 80%;
+        margin-top: 42px;
+        button {
+          font-size: fonts.$font-size-xl;
+          font-weight: 700;
+          width: fit-content;
+          padding: 10px 20px;
+          border-radius: 10px;
+        }
+        .explore-now {
+          background: colors.$gradient-blue;
+        }
+        .create {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+      .market-place-main-stats {
+        @include fn.flex(center, space-between);
+        margin-top: 46px;
+        .market-place-main-stat {
+          text-align: center;
+          color: rgba(255, 255, 255, 0.5);
+          font-size: fonts.$font-size-xl;
+          .stat-number {
+            font-size: fonts.$font-size-3xl;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 1);
+          }
+        }
+      }
+    }
+    .market-place-banner {
+      width: 100%;
+      // grid-column: 1/3;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  // Featured
+  .market-place-featured {
+    margin-top: 4rem;
+    .market-place-featured-navigator {
+      .header {
+        @include fn.flex(center, space-between);
+        .heading {
+          font-size: fonts.$font-size-3xl;
+          font-weight: 700;
+        }
+      }
+    }
+    .market-place-featured-elements {
+      @include fn.flex(center, flex-start);
+      scroll-behavior: smooth;
+      overflow: hidden;
+      flex-wrap: nowrap;
+      // gap: 2rem;
+      margin-top: 3rem;
+      .swiper-slide {
+        padding: 1rem 1rem 4rem;
+      }
+      .market-place-featured-element {
+        @include fn.flex-col(center, flex-start);
+        // min-width: 310px;
+        width: 100%;
+        font-weight: 300;
+        .nft-image-size {
+          width: 100%;
+          aspect-ratio: 1/1;
+          height: auto;
+          overflow: hidden;
+          position: relative;
+          border-radius: 20px;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // border-radius: 20px;
+          }
+        }
+        .heading {
+          font-size: fonts.$font-size-3xl;
+          font-weight: 700;
+          margin-bottom: 9px;
+        }
+      }
+    }
+  }
+  // Trending
+  .market-place-trending {
+    margin-top: 4rem;
+    .market-place-trending-navigator {
+      .header {
+        @include fn.flex(center, space-between);
+        .heading {
+          display: flex;
+          column-gap: 10px;
+          font-size: fonts.$font-size-3xl;
+          font-weight: 700;
+          .category-selector {
+            // padding-left: 10px;
+            color: #5d5fef;
+            display: inline;
+            position: relative;
+            .category-list {
+              @include fn.flex-col(flex-start, flex-start);
+              backdrop-filter: blur(10px);
+              padding: 20px;
+              white-space: nowrap;
+              position: absolute;
+              left: 0;
+              top: 100%;
+              z-index:100;
+              .category-list-option {
+                color: #5d5fef;
+                font-weight: 700;
+                width: 100%;
+                text-align: left;
+                padding: 0;
+              }
+            }
+          }
+          &>div{
+            display: flex;
+          }
+          button {
+            font-size: fonts.$font-size-3xl;
+            font-weight: 700;
+            color: #5d5fef;
+            display: flex;
+            align-items: center;
+            img {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+    .market-place-trending-elements {
+      @include fn.flex(center, flex-start);
+      scroll-behavior: smooth;
+      overflow: hidden;
+      flex-wrap: nowrap;
+      // gap: 5%;
+      margin-top: 3rem;
+      .swiper-slide {
+        padding: 1rem 1rem 4rem;
+      }
+      .swiper-pagination-bullet{
+        background-color: rgba(255, 255, 255, 0.2);
+        opacity: 1;
+        width: 2rem;
+        height: 10px;
+        border-radius: 9999999px;
+      }
+      .swiper-pagination-bullet-active{
+        background-color: #5d5fef;
+        width: 3rem;
+      }
+      .market-place-trending-element {
+        @include fn.flex-col(flex-start, flex-start);
+        // min-width: 30vw;
+        width: 100%;
+        font-weight: 300;
+        position: relative;
+        .nft-image-size {
+          width: 100%;
+          aspect-ratio: 1/1;
+          height: auto;
+          overflow: hidden;
+          position: relative;
+          border-radius: 20px;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+          }
+        }
+        .info {
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          width:100%;
+          transform: translateY(-18px);
+          .creator-image {
+            // position: absolute;
+            display: block;
+            height: 75px;
+            width: 75px;
+            left: -60%;
+            top: -50%;
+            border-radius: 50%;
+          }
+          .info-text {
+            margin-left:10px;
+            .heading {
+              font-weight: 500;
+              margin-bottom: 0;
+              
+            }
+            
+            .credit {
+              .creator-name {
+                color: #5d5fef;
+              }
+            }
+          }
+          
+        }
+        .text {
+          text-align: center !important;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // Auctions
+  .market-place-auctions {
+    margin-top: 4rem;
+    .market-place-auctions-navigator {
+      .header {
+        @include fn.flex(center, flex-start);
+        gap: 60px;
+        .heading {
+          font-size: fonts.$font-size-3xl;
+          font-weight: 700;
+        }
+        .types {
+          @include fn.flex(center, flex-start);
+          gap: 20px;
+          .type-button {
+            position: relative;
+            font-size: fonts.$font-size-2xl;
+            font-weight: 500;
+            color: #5d5fef;
+          }
+          .type-button::after {
+            position: absolute;
+            content: "";
+            width: 80%;
+            height: 5px;
+            border-radius: 100px;
+            background-color: rgba(255, 255, 255, 0.2);
+            left: 50%;
+            transform: translateX(-50%);
+            top: 110%;
+            transition: 0.3s ease-in-out;
+          }
+          .type-button.current::after {
+            background-color: #5d5fef;
+          }
+        }
+        .btn-holder {
+          margin-left: auto;
+        }
+      }
+    }
+    .market-place-auctions-elements {
+      @include fn.flex(flex-start, flex-start);
+      margin-top: 3rem;
+      scroll-behavior: smooth;
+      overflow: hidden;
+      flex-wrap: nowrap;
+      // gap: 5%;
+      .swiper-slide {
+        padding: 1rem 1rem 4rem;
+      }
+      .market-place-auction-element {
+        @include fn.flex-col(center, center);
+        gap: 10px;
+        width: 100%;
+        // min-width: 25vw;
+        .nft-image-size {
+          width: 100%;
+          aspect-ratio: 1/1;
+          height: auto;
+          overflow: hidden;
+          position: relative;
+          border-radius: 20px;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .name {
+          font-size: fonts.$font-size-2xl;
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+        .seller-name {
+          color: #5d5fef;
+          img {
+            display: inline;
+            vertical-align: middle;
+            height: 100%;
+            width: auto;
+          }
+        }
+        .info {
+          @include fn.flex(center, flex-start);
+          gap: 10px;
+          .type {
+            color: #5d5fef;
+          }
+        }
+      }
+    }
+  }
+
+  // Top Collections
+  .market-place-top-collections {
+    margin-top: 4rem;
+    .header {
+      @include fn.flex(center, space-between);
+      width: 100%;
+      .heading {
+        @include fn.flex(center, flex-start);
+        gap: 10px;
+        h2 {
+          margin: 0;
+          font-size: fonts.$font-size-3xl;
+          font-weight: 700;
+        }
+        .day-selector {
+          position: relative;
+          .day-filter,
+          .day-button {
+            font-size: fonts.$font-size-3xl;
+            font-weight: 700;
+            color: #5d5fef;
+          }
+          .day-list {
+            @include fn.flex-col(flex-start, flex-start);
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+            position: absolute;
+            top: 110%;
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+      button {
+        display: inline;
+      }
+    }
+    .market-place-top-collections-elements {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 36px;
+      grid-row-gap: 24px;
+      margin-top: 58px;
+
+      .market-place-top-collections-element {
+        @include fn.flex(center, space-between);
+        gap: 20px;
+        padding: 20px;
+        border: 1px dashed rgba(255, 255, 255, 0.32);
+        font-size: fonts.$font-size-lg;
+        img {
+          display: block;
+          height: 4em;
+          width: 4em;
+          border-radius: 50%;
+        }
+        .indivisual-container{
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+        .name {
+          font-size: fonts.$font-size-xl;
+          font-weight: 700;
+        }
+        .price {
+          display: flex;
+          gap: 0.1rem;
+          align-items: center;
+          color: rgba(255, 255, 255, 0.21);
+          font-weight: 700;
+          img {
+            display: inline-block;
+            height: 2em;
+            width: auto;
+            vertical-align: middle;
+          }
+        }
+        .change {
+          display: flex;
+          gap: 0.1rem;
+          align-items: center;
+          color: #5d5fef;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  // Create and Sell
+  .market-place-create-and-sell {
+    @include fn.flex(center, center);
+    gap: 70px;
+    margin-top: 171px;
+    .left {
+      .heading {
+        font-weight: 700;
+        font-size: fonts.$font-size-4xl;
+        margin: 0;
+        margin-bottom: 40px;
+      }
+      .btn {
+        font-size: fonts.$font-size-xl;
+        padding: 10px 50px;
+      }
+    }
+    .right {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-row-gap: 100px;
+      grid-column-gap: 80px;
+      .info-div {
+        .img-holder {
+          position: relative;
+          border: 1px dashed #5d5fef;
+          height: 95px;
+          width: 95px;
+          img {
+            position: absolute;
+            display: block;
+            height: 100px;
+            width: 100px;
+            left: 25%;
+            top: -25%;
+          }
+        }
+        .info-heading {
+          font-size: fonts.$font-size-3xl;
+          font-weight: 700;
+          margin: 10px 0;
+        }
+        .info-text {
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  // Discover
+  .market-place-discover {
+    @include fn.flex-col(center, flex-start);
+    margin-top: 171px;
+    gap: 104px;
+    .heading {
+      font-size: fonts.$font-size-3xl;
+      margin: 0;  
+    }
+    .holder {
+      @include fn.flex(center, center);
+      gap: 62px;
+      .left-list,
+      .right-list {
+        @include fn.flex-col(center, space-between);
+        gap: 90px;
+        height: 100%;
+        a {
+          font-size: fonts.$font-size-3xl;
+          font-weight: 500;
+        }
+        a:hover {
+          @include fn.text-gradient();
+        }
+      }
+      .left-list {
+        align-items: flex-start;
+      }
+      .right-list {
+        align-items: flex-end;
+      }
+      .discover-image {
+        display: block;
+        height: 100%;
+      }
+    }
+  }
+}
+.type {
+  text-transform: capitalize;
+}
+.goto-ranking.hid{
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .market-place-top-collections-element {
+    gap: 1rem !important;
+    padding: 1rem !important;
+    font-size: fonts.$font-size-base !important;
+    img {
+      height: 3rem !important;
+      width: 3rem !important;
+    }
+    .name {
+      font-size: fonts.$font-size-lg !important;
+    }
+    .price{
+      img{
+        width: 1.5rem !important;
+      }
+    }
+  }
+  .market-place-top-collections-elements{
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .market-place-create-and-sell{
+    flex-direction: column !important;
+    margin-top: 4rem !important;
+    .info-heading{
+      text-align: center;
+    }
+    .heading{
+      font-size: fonts.$font-size-xl !important;
+    }
+    .btn.nav-link{
+      display: none;
+    }
+    .right{
+      grid-template-columns: repeat(1, 1fr) !important;
+      .info-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+          text-align: center;
+        }
+      }
+    }
+  }
+  .market-place-discover{
+    .left-list, .right-list{
+      display: none !important;
+    }
+    .heading{
+      font-size: fonts.$font-size-xl !important;
+    }
+    .discover-image{
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .market-place {
+    padding: 2rem;
+  }
+  .goto-ranking.hid{
+    display: flex !important;
+    // height: 3rem;
+    justify-content: center;
+    padding: 2rem;
+    .goto-ranking{
+      display: block;
+    }
+  }
+  .market-place-main{
+    width: 100%;
+    .market{
+      display: flex !important;
+      flex-direction: column-reverse;
+      &>img{
+        height: 300px !important;
+      }
+    }
+  }
+  // .btn-holder{
+  //   display: none !important;
+  // }
+  .market-place-featured{
+    margin-top: 4rem !important;
+  }
+  .market-place-featured-navigator{
+    .header{
+      // justify-content: center !important;
+      .heading{
+        // text-align: center;
+        font-size: fonts.$font-size-xl !important;
+      }
+    }
+  }
+  .market-place-trending{
+    margin-top: 0 !important;
+  }
+  .market-place-auctions{
+    margin-top: 0 !important;
+  }
+  .market-place-trending-navigator{
+    .header{
+      // justify-content: center !important;
+      .heading{
+        // text-align: center;
+        flex-direction: column;
+        font-size: fonts.$font-size-xl !important;
+        button{
+          font-size: fonts.$font-size-xl !important;
+          img{
+            width: 1rem;
+          }
+        }
+        .category-list-option{
+          font-size: fonts.$font-size-xl !important;
+        }
+      }
+    }
+  }
+  .market-place-auctions-navigator{
+    .header{
+      // justify-content: center !important;
+      gap: 2rem !important;
+      .heading{
+        // text-align: center;
+        font-size: fonts.$font-size-xl !important;
+      }
+      .types{
+        gap: 1rem !important;
+        button{
+          font-size: fonts.$font-size-base !important;
+          padding: 0;
+        }
+      }
+    }
+  }
+  .market-place-top-collections{
+    .header{
+      justify-content: center !important;
+      gap: 2rem !important;
+      .heading{
+        flex-direction: column;
+        h2, .day-filter{
+          text-align: center;
+          font-size: fonts.$font-size-xl !important;
+          img{
+            width: 1.5rem !important;
+          }
+        }
+      }
+    }
+    .goto-ranking{
+      display: none;
+    }
+  }
+  .market-place-top-collections-element {
+    gap: 0.5rem !important;
+    padding: 1rem !important;
+    font-size: fonts.$font-size-sm !important;
+    img {
+      height: 2.5rem !important;
+      width: 2.5rem !important;
+    }
+    .indivisual-container{
+    gap: 0.5rem !important;
+
+    }
+    .name {
+      font-size: fonts.$font-size-sm !important;
+    }
+    .price{
+      img{
+        width: 1.5rem !important;
+      }
+    }
+  }
+  
+}
